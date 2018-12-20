@@ -1,0 +1,20 @@
+todo_homepage:
+    path:     /
+    defaults: { _controller: TodoBundle:Todo:index }
+
+todo_create:
+    path:     /create
+    defaults: { _controller: TodoBundle:Todo:create }
+
+todo_update:
+    path:     /update{id}
+    defaults: { _controller: TodoBundle:Todo:update }
+
+todo_delete:
+    path:     /delete{id}
+    defaults: { _controller: TodoBundle:Todo:delete }
+
+todo_disable:
+    path:     /disable{id}
+    defaults: { _controller: TodoBundle:Todo:disable }
+

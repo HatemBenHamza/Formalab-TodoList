@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block main %}
+
+<table class="table table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Description</th>
+      <th scope="col">Priority</th>
+      <th scope="col">Due Date</th>
+      <th scope="col">Created Date</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for todo in todos %}
+    {% if todo.enabled %}
+      <tr>
+        <th scope="row">1</th>
+        <td>{{ todo.name }}</td>
+        <td>{{ todo.description }}</td>
+        {% if todo.priority == 'High' %}
+          <td class="alert alert-danger text-center">{{ todo.priority }}</td>
+        {% elseif todo.priority == 'Medium' %}
+          <td class="alert alert-warning text-center">{{ todo.priority }}</td>
+        {% else %}
+          <td class="alert alert-success text-center">{{ todo.priority }}</td>
+        {% endif %}
+        <td>{{ todo.dueDate | date('d/m/y')  }}</td>
+        <td>{{ todo.createdDate | date('d/m/y') }}</td>
+        <td><a href="{{ path('todo_delete',{'id':todo.id}) }}" 
+        class="btn btn-danger">Delete</a>
+        <a href="{{ path('todo_update',{'id':todo.id}) }}" 
+        class="btn btn-info">Update</a></td>
+        <td><a href="{{ path('todo_disable',{'id':todo.id}) }}" class="btn btn-light">Disable Todo</a></td>
+      </tr>
+    {% endif %}
+{% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}

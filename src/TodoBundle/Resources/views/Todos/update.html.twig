@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block main %}
+<div class="container">
+{{ form_start(form) }}
+    {{ form_widget(form) }}
+    <input type="submit" class="btn btn-primary" value="Update Todo">
+{{ form_end(form) }}
+</div>
+{% endblock %}
